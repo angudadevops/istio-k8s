@@ -57,6 +57,8 @@ Now install the destination rule to map the specific version as a subest
 $ kubectl apply -f python-destination-rule.yaml
 ```
 
+## Deploy Istio Rules 
+
 Now it's time to descide what type of virtual service type you want to use, below are the available methods
 
 - HTTP Based Routing 
