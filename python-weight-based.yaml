@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pythonapp-weight
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - pythonweb-gateway
+  http:
+  - match:
+    - uri:
+        exact: /app
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: pythonapp
+        subset: version1
+        port:
+          number: 5000
+      weight: 50
+    - destination:
+        host: pythonapp
+        subset: version2
+        port:
+          number: 5000
+      weight: 50
